@@ -35,9 +35,7 @@ const Table = () => {
     >
       <TableHeaders />
       {isLoading && <Loader />}
-      <Box width="100%" height="3000px">
-        test
-      </Box>
+
       {error ? (
         <Box
           display="flex"

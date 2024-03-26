@@ -20,8 +20,6 @@ export const useTagsStore = create<TagState>((set) => ({
       page: (params.page as string) || "1",
     };
 
-    console.log(params, "aaa");
-
     try {
       const response = await API.get<TagsResponse>(
         `${APIRoutes.tags}${defaultParams.initialParams(p)}${
@@ -32,13 +30,13 @@ export const useTagsStore = create<TagState>((set) => ({
       set({
         tags: response.data.items,
         isLoading: false,
-        hasMore: true,
+        hasMore: response.data.has_more,
       });
     } catch (error) {
       set({
         error: "Failed to fetch tags",
         isLoading: true,
-        hasMore: true,
+        hasMore: false,
       });
     }
   },
