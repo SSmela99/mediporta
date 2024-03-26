@@ -1,4 +1,5 @@
 import { TagsEntity } from "@/interfaces/services";
+import theme from "@/styles/theme";
 import { Box, Typography } from "@mui/material";
 
 interface EntityProps {
@@ -32,7 +33,7 @@ const TableRow = ({ count, name }: TagsEntity) => {
       textAlign="center"
       sx={{
         "&:hover": {
-          backgroundColor: "red",
+          backgroundColor: theme.palette.secondary.main,
         },
       }}
     >
