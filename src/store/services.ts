@@ -35,7 +35,7 @@ export const useTagsStore = create<TagState>((set) => ({
     } catch (error) {
       set({
         error: "Failed to fetch tags",
-        isLoading: true,
+        isLoading: false,
         hasMore: false,
       });
     }
