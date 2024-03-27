@@ -1,8 +1,10 @@
-import { Box } from "@mui/material";
-import Table from "@/components/Table";
-import { useTagsStore } from "@/store/services";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
+import { useTagsStore } from "@/store/services";
+
+import { Box } from "@mui/material";
+import Table from "@/components/Table";
 import theme from "@/styles/theme";
 
 import q from "query-string";

@@ -8,26 +8,8 @@ export interface TagsResponse {
 }
 
 export interface TagsEntity {
-  collectives?: CollectivesEntity[] | null;
-  has_synonyms: boolean;
-  is_moderator_only: boolean;
-  is_required: boolean;
   count: number;
   name: string;
-}
-
-export interface CollectivesEntity {
-  tags?: string[] | null;
-  external_links?: ExternalLinksEntity[] | null;
-  description: string;
-  link: string;
-  name: string;
-  slug: string;
-}
-
-export interface ExternalLinksEntity {
-  type: string;
-  link: string;
 }
 
 export interface TagState {

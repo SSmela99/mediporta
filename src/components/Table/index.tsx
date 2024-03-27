@@ -3,37 +3,17 @@ import { useTagsStore } from "@/store/services";
 
 import TableHeaders from "@/components/Table/TableHeader";
 import TableRow from "@/components/Table/TableRow";
-import theme from "@/styles/theme";
 import Loader from "@/components/Loader";
+
+import { MAIN_TEMPLATE } from "@/styles/customStyles";
 
 const Table = () => {
   const { tags, isLoading, error } = useTagsStore();
 
   return (
-    <Container
-      sx={{
-        height: "800px",
-        border: "1px solid black",
-        borderRadius: "12px",
-        backgroundColor: "#fff",
-        overflowY: "scroll",
-        overflowX: "hidden",
-        position: "relative",
-        "&": {
-          padding: "0 0 !important",
-        },
-        "&::-webkit-scrollbar": {
-          width: "8px",
-        },
-        "&::-webkit-scrollbar-track": {
-          backgroundColor: "#7e8cd6",
-        },
-        "&::-webkit-scrollbar-thumb": {
-          backgroundColor: theme.palette.secondary.main,
-        },
-      }}
-    >
+    <Container sx={MAIN_TEMPLATE}>
       <TableHeaders />
+
       {isLoading && <Loader />}
 
       {error ? (

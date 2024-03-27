@@ -1,7 +1,8 @@
 import { create } from "zustand";
+import { ParsedQuery } from "query-string";
+
 import { API, APIRoutes } from "@/api";
 import { TagState, TagsResponse } from "@/interfaces/services";
-import { ParsedQuery } from "query-string";
 import { defaultParams } from "@/constants";
 
 export const useTagsStore = create<TagState>((set) => ({

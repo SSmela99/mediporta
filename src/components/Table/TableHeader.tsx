@@ -4,6 +4,7 @@ import queryString from "query-string";
 
 import { tableHeaders } from "@/constants";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 import Pagination from "@/components/Pagination";
@@ -11,6 +12,7 @@ import theme from "@/styles/theme";
 
 const TableHeaders = () => {
   const currentSearchParams = queryString.parse(window.location.search);
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [pageSize, setPageSize] = useState(searchParams.get("pagesize") ?? 25);
@@ -46,32 +48,42 @@ const TableHeaders = () => {
 
   return (
     <Box position="sticky" top="0" bgcolor="#fff" pt="24px" zIndex="11">
-      <Box display="flex" alignItems="center" gap={2} px={2}>
+      <Box
+        display="flex"
+        flexDirection={isMobile ? "column-reverse" : "row"}
+        alignItems={isMobile ? "flex-start" : "center"}
+        gap={2}
+        px={2}
+      >
         <Pagination />
+
         <Box flex={1} />
-        <TextField
-          inputRef={inputRef}
-          type="number"
-          InputProps={{ inputProps: { min: 1, max: 100 } }}
-          defaultValue={pageSize}
-          onChange={(e) => setPageSize(e.target.value)}
-          label="Page size"
-        />
-        <Button
-          variant="contained"
-          disabled={
-            parseInt(inputRef.current?.value as string, 10) <= 0 ||
-            parseInt(inputRef.current?.value as string, 10) > 100
-          }
-          onClick={() =>
-            setSearchParams({
-              ...currentSearchParams,
-              pagesize: pageSize as string,
-            })
-          }
-        >
-          Set page size
-        </Button>
+
+        <Box display="flex" alignItems="center" gap={2}>
+          <TextField
+            inputRef={inputRef}
+            type="number"
+            InputProps={{ inputProps: { min: 1, max: 100 } }}
+            defaultValue={pageSize}
+            onChange={(e) => setPageSize(e.target.value)}
+            label="Page size"
+          />
+          <Button
+            variant="contained"
+            disabled={
+              parseInt(inputRef.current?.value as string, 10) <= 0 ||
+              parseInt(inputRef.current?.value as string, 10) > 100
+            }
+            onClick={() =>
+              setSearchParams({
+                ...currentSearchParams,
+                pagesize: pageSize as string,
+              })
+            }
+          >
+            Set page size
+          </Button>
+        </Box>
       </Box>
       <Box
         width="100%"
@@ -97,7 +109,7 @@ const TableHeaders = () => {
                 borderRight: "none",
               },
               "&:hover": {
-                backgroundColor: theme.palette.secondary.main,
+                backgroundColor: theme.palette.primary.light,
               },
             }}
             onClick={() => setParams(h.params)}
