@@ -2,8 +2,10 @@ import { useMemo } from "react";
 import { Box, SxProps, Typography } from "@mui/material";
 import theme from "@/styles/theme";
 
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 interface PaginationButtonProps {
-  icon: React.ReactNode;
   text: string;
   onClick: () => void;
   style: SxProps;
@@ -11,7 +13,6 @@ interface PaginationButtonProps {
 }
 
 const PaginationButton = ({
-  icon,
   text,
   onClick,
   style,
@@ -40,7 +41,7 @@ const PaginationButton = ({
     >
       <Box display="flex" alignItems="center" flexDirection={flexDirection}>
         <Typography>{text}</Typography>
-        {icon}
+        {isSecond ? <ChevronRightIcon /> : <ChevronLeftIcon />}
       </Box>
     </Box>
   );

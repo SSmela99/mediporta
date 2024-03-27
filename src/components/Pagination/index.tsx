@@ -6,8 +6,6 @@ import { useTagsStore } from "@/store/services";
 import PaginationButton from "@/components/Pagination/PaginationButton";
 
 import { Box, Typography } from "@mui/material";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Pagination = () => {
   const currentSearchParams = queryString.parse(window.location.search);
@@ -30,7 +28,6 @@ const Pagination = () => {
     <Box display="flex" alignItems="center" gap={1}>
       <PaginationButton
         text="Prev"
-        icon={<ChevronLeftIcon />}
         onClick={() => (page > 1 ? setPage("prev") : null)}
         style={{
           cursor: page > 1 ? "pointer" : "unset",
@@ -40,7 +37,6 @@ const Pagination = () => {
 
       <PaginationButton
         text="Next"
-        icon={<ChevronRightIcon />}
         onClick={() => (hasMore ? setPage("next") : null)}
         style={{
           cursor: hasMore ? "pointer" : "unset",
